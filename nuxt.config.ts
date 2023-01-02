@@ -26,6 +26,7 @@ export default defineNuxtConfig({
 		'@kevinmarrec/nuxt-pwa',
 		'@nuxt/content',
 		'@vueuse/nuxt',
+		'@nuxtjs/supabase',
 	],
 	srcDir: 'src',
 })
