@@ -1,3 +1,6 @@
+import { createResolver } from '@nuxt/kit'
+const { resolve } = createResolver(import.meta.url)
+
 export default defineNuxtConfig({
 	appConfig: {
 		nuxtIcon: {
@@ -12,6 +15,10 @@ export default defineNuxtConfig({
 			anchorLinks: false,
 		},
 	},
+	css: [
+		resolve('./src/assets/css/globals.css'),
+		resolve('./src/assets/css/transitions.css'),
+	],
 	googleFonts: {
 		download: true,
 		families: {

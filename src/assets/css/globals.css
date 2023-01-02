@@ -1,0 +1,35 @@
+html {
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+body {
+    -webkit-tap-highlight-color: transparent;
+}
+
+*, *:focus {
+    outline: none !important;
+}
+
+.border {
+	@apply border-slate-200 dark:border-neutral-700;
+}
+
+@media (min-width: 640px) {
+	::-webkit-scrollbar {
+		@apply w-3;
+	}
+	::-webkit-scrollbar-track {
+		@apply bg-slate-100 dark:bg-neutral-900;
+	}
+	::-webkit-scrollbar-thumb {
+		@apply bg-clip-content bg-slate-300 dark:bg-neutral-700 duration-300 rounded-full;
+		border: 3px solid #f1f5f9;
+		&:hover {
+			@apply bg-slate-400 dark:bg-neutral-600;
+		}
+	}
+	.dark ::-webkit-scrollbar-thumb {
+		border: 3px solid #171717;
+	}
+}
