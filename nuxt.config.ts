@@ -18,6 +18,7 @@ export default defineNuxtConfig({
 		'nuxt-windicss',
 		'@nuxtjs/google-fonts',
 		'@nuxtjs/color-mode',
+		'@kevinmarrec/nuxt-pwa',
 	],
 	srcDir: 'src',
 })
