@@ -1,12 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@nuxtjs/color-mode': ^3.2.0
   '@nuxtjs/google-fonts': 3.0.0-1
   nuxt: ^3.0.0
   nuxt-icon: ^0.1.8
   nuxt-windicss: ^2.6.0
 
 dependencies:
+  '@nuxtjs/color-mode': 3.2.0
   '@nuxtjs/google-fonts': 3.0.0-1
   nuxt-icon: 0.1.8
   nuxt-windicss: 2.6.0
@@ -605,6 +607,17 @@ packages:
       - vls
       - vti
     dev: true
+
+  /@nuxtjs/color-mode/3.2.0:
+    resolution: {integrity: sha512-isDR01yfadopiHQ/VEVUpyNSPrk5PCjUHS4t1qYRZwuRGefU4s9Iaxf6H9nmr1QFzoMgTm+3T0r/54jLwtpZbA==}
+    dependencies:
+      '@nuxt/kit': 3.0.0
+      lodash.template: 4.5.0
+      pathe: 1.0.0
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: false
 
   /@nuxtjs/google-fonts/3.0.0-1:
     resolution: {integrity: sha512-eSFvAAMU1e2lxHn6Os41vVz8ngyPURAiYjpVMpmIv5ZqvQ3kn+YfPAglXQ0PfOVKunbLdj1prcnv+Pk5jG0Sbg==}
