@@ -7,6 +7,11 @@ export default defineNuxtConfig({
 	colorMode: {
 		classSuffix: '',
 	},
+	content: {
+		markdown: {
+			anchorLinks: false,
+		},
+	},
 	googleFonts: {
 		download: true,
 		families: {
@@ -19,6 +24,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/google-fonts',
 		'@nuxtjs/color-mode',
 		'@kevinmarrec/nuxt-pwa',
+		'@nuxt/content',
 	],
 	srcDir: 'src',
 })
