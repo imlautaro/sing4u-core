@@ -4,6 +4,6 @@ export default defineNuxtConfig({
 			size: '1.5em',
 		},
 	},
-	modules: ['nuxt-icon'],
+	modules: ['nuxt-icon', 'nuxt-windicss'],
 	srcDir: 'src',
 })
