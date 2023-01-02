@@ -25,6 +25,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/color-mode',
 		'@kevinmarrec/nuxt-pwa',
 		'@nuxt/content',
+		'@vueuse/nuxt',
 	],
 	srcDir: 'src',
 })
