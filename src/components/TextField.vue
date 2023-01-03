@@ -48,7 +48,7 @@ const show = ref(false)
 			<div
 				v-if="type === 'password'"
 				@click.prevent="show = !show"
-				class="toggle-btn flex p-2 -mx-2 absolute top-1/2 transform -translate-y-1/2 right-4 rounded-lg"
+				class="toggle-btn cursor-pointer flex p-2 -mx-2 absolute top-1/2 transform -translate-y-1/2 right-4 rounded-lg"
 			>
 				<Icon
 					:name="show ? 'lucide:eye' : 'lucide:eye-off'"
