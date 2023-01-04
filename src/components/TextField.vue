@@ -78,7 +78,7 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-	@apply bg-transparent;
+	background-color: transparent;
 	-webkit-text-fill-color: inherit;
 	transition: background-color 5000s ease-in-out 0s;
 }
@@ -91,7 +91,7 @@ select:-webkit-autofill:focus {
 .dark select:-webkit-autofill,
 .dark select:-webkit-autofill:hover,
 .dark select:-webkit-autofill:focus {
-	@apply bg-transparent;
+	background-color: transparent;
 	-webkit-text-fill-color: white;
 	transition: background-color 5000s ease-in-out 0s;
 }

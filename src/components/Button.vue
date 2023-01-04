@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const NuxtLink = resolveComponent('NuxtLink')
 
-withDefaults(
+const props = withDefaults(
 	defineProps<{
 		icon?: string
 		pending?: boolean
@@ -15,6 +15,35 @@ withDefaults(
 		color: 'secondary',
 	}
 )
+
+const buildClasses = computed(() => {
+	const classes = [
+		'btn',
+		'disabled:(!bg-slate-100 !border-slate-200 !text-slate-400)',
+		'dark:disabled:(!bg-neutral-700 !border-neutral-600 !text-neutral-500)',
+		'duration-100 group border-2 border-b-4 overflow-hidden relative whitespace-nowrap',
+	]
+
+	if (props.block) classes.push('w-full')
+
+	if (props.small) {
+		classes.push('text-sm rounded-xl')
+	} else {
+		classes.push('text-base rounded-2xl')
+	}
+
+	classes.push('active:border-b')
+
+	if (props.color === 'primary') {
+		classes.push('bg-primary-600 border-primary-700 text-white')
+	} else {
+		classes.push(
+			'bg-white border-slate-200 dark:(bg-neutral-800 border-neutral-700)'
+		)
+	}
+
+	return classes.join(' ')
+})
 </script>
 
 <template>
@@ -22,13 +51,7 @@ withDefaults(
 		:is="to !== undefined ? NuxtLink : 'button'"
 		:to="to"
 		:disabled="pending"
-		:class="{
-			[`btn-${color}`]: true,
-			'w-full': block,
-			'text-sm rounded-xl': small,
-			'text-base rounded-2xl': !small,
-		}"
-		class="disabled:(!bg-slate-100 !border-slate-200 !text-slate-400) dark:disabled:(!bg-neutral-700 !border-neutral-600 !text-neutral-500) btn duration-100 group border-2 border-b-4 overflow-hidden relative whitespace-nowrap"
+		:class="buildClasses"
 	>
 		<div
 			:class="
@@ -55,7 +78,14 @@ withDefaults(
 				</span>
 			</template>
 		</div>
-		<div class="overlay absolute duration-100 h-full left-0 top-0 w-full" />
+		<div
+			:class="
+				color === 'primary'
+					? 'nt:group-hover:bg-white/5 !active:bg-black/5'
+					: 'nt:group-hover:bg-slate-200/25 dark:nt:group-hover:bg-neutral-700/25 !group-active:bg-slate-200/50 !dark:group-active:bg-neutral-700/50'
+			"
+			class="absolute duration-100 h-full left-0 top-0 w-full"
+		/>
 	</component>
 </template>
 
@@ -79,40 +109,5 @@ withDefaults(
 	border-top-right-radius: 0px;
 	border-bottom-right-radius: 0px;
 	border-right-width: 1px !important;
-}
-</style>
-
-<style scoped>
-.btn:active {
-	@apply border-b-2;
-}
-.btn-primary {
-	@apply bg-primary-600 border-primary-700 text-white;
-}
-.btn-secondary {
-	@apply bg-white border-slate-200;
-}
-.dark .btn-secondary {
-	@apply bg-neutral-800 border-neutral-700;
-}
-@media (hover: hover) {
-	.btn-primary:hover .overlay {
-		@apply bg-white/5;
-	}
-	.btn-secondary:hover .overlay {
-		@apply bg-slate-200/25;
-	}
-	.dark .btn-secondary:hover .overlay {
-		@apply bg-neutral-700/25;
-	}
-}
-.btn-primary:active .overlay {
-	@apply bg-black/5 !important;
-}
-.btn-secondary:active .overlay {
-	@apply bg-slate-200/50 !important;
-}
-.dark .btn-secondary:active .overlay {
-	@apply bg-neutral-700/50 !important;
 }
 </style>

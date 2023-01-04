@@ -15,10 +15,12 @@ const backdrop = useBackdrop()
 <style scoped>
 .backdrop-enter-active,
 .backdrop-leave-active {
-	@apply duration-200;
+	-webkit-transition-duration: 200ms;
+	-o-transition-duration: 200ms;
+	transition-duration: 200ms;
 }
 .backdrop-enter-from,
 .backdrop-leave-to {
-	@apply opacity-0;
+	opacity: 0;
 }
 </style>

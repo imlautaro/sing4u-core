@@ -1,56 +1,56 @@
 <script setup lang="ts">
-withDefaults(
+const props = withDefaults(
 	defineProps<{
 		color?: 'error' | 'gray' | 'info' | 'primary' | 'success' | 'warning'
 	}>(),
 	{ color: 'primary' }
 )
+
+const buildClasses = computed(() => {
+	const classes: string[] = []
+
+	switch (props.color) {
+		case 'gray':
+			classes.push(
+				'bg-slate-200 text-slate-400 dark:(bg-neutral-800 text-neutral-600)'
+			)
+			break
+		case 'error':
+			classes.push(
+				'bg-error-600/10 text-error-600 dark:(bg-error-400/10 text-error-400)'
+			)
+			break
+		case 'success':
+			classes.push(
+				'bg-success-600/10 text-success-600 dark:(bg-success-400/10 text-success-400)'
+			)
+			break
+		case 'info':
+			classes.push(
+				'bg-info-600/10 text-info-600 dark:(bg-info-400/10 text-info-400)'
+			)
+			break
+		case 'warning':
+			classes.push(
+				'bg-warning-600/10 text-warning-600 dark:(bg-warning-400/10 text-warning-400)'
+			)
+			break
+		case 'primary':
+		default:
+			classes.push(
+				'bg-primary-600/10 text-primary-600 dark:(bg-primary-400/10 text-primary-400)'
+			)
+	}
+
+	return classes.join(' ')
+})
 </script>
 
 <template>
 	<span
-		:class="`badge-${color}`"
+		:class="buildClasses"
 		class="duration-100 text-xs uppercase font-extrabold h-min px-2 py-1 rounded-md tracking-wide"
 	>
 		<slot />
 	</span>
 </template>
-
-<style scoped>
-.badge-primary {
-	@apply bg-primary-600/10 text-primary-600;
-}
-.dark .badge-primary {
-	@apply bg-primary-400/10 text-primary-400;
-}
-.badge-error {
-	@apply bg-red-600/10 text-red-600;
-}
-.dark .badge-error {
-	@apply bg-red-400/10 text-red-400;
-}
-.badge-success {
-	@apply bg-green-600/10 text-green-600;
-}
-.dark .badge-success {
-	@apply bg-green-400/10 text-green-400;
-}
-.badge-info {
-	@apply bg-sky-600/10 text-sky-600;
-}
-.dark .badge-info {
-	@apply bg-sky-400/10 text-sky-400;
-}
-.badge-warning {
-	@apply bg-orange-600/10 text-orange-600;
-}
-.dark .badge-warning {
-	@apply bg-orange-400/10 text-orange-400;
-}
-.badge-gray {
-	@apply bg-slate-200 text-slate-400;
-}
-.dark .badge-gray {
-	@apply bg-neutral-800 text-neutral-600;
-}
-</style>
