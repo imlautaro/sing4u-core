@@ -1,7 +1,13 @@
 import { Provider } from '@supabase/gotrue-js'
 
 export default () => {
+	const {
+		public: { baseURL },
+	} = useRuntimeConfig()
 	const supaAuth = useSupabaseAuthClient().auth
+
+	const route = useRoute()
+	const redirectTo = route.query?.redirect || '/'
 
 	const email = ref('')
 
@@ -29,6 +35,9 @@ export default () => {
 
 		const { error } = await supaAuth.signInWithOtp({
 			email: email.value,
+			options: {
+				emailRedirectTo: `${baseURL}${redirectTo}`,
+			},
 		})
 
 		pending.value = false
@@ -52,6 +61,9 @@ export default () => {
 
 		const { error } = await supaAuth.signInWithOAuth({
 			provider,
+			options: {
+				redirectTo: `${baseURL}${redirectTo}`,
+			},
 		})
 
 		pending.value = false
