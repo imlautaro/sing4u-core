@@ -40,21 +40,28 @@ watch(
 @media (min-width: 768px) {
 	.dialog-enter-active,
 	.dialog-leave-active {
-		@apply duration-200 transform;
+		-webkit-transition-duration: 200ms;
+		-o-transition-duration: 200ms;
+		transition-duration: 200ms;
+		transform: scale(1);
 	}
 	.dialog-enter-from,
 	.dialog-leave-to {
-		@apply opacity-0 scale-95;
+		opacity: 0;
+		transform: scale(0.95);
 	}
 }
 @media (max-width: 768px) {
 	.dialog-enter-active,
 	.dialog-leave-active {
-		@apply duration-200 transform;
+		-webkit-transition-duration: 200ms;
+		-o-transition-duration: 200ms;
+		transition-duration: 200ms;
+		transform: translateY(0);
 	}
 	.dialog-enter-from,
 	.dialog-leave-to {
-		@apply translate-y-full;
+		transform: translateY(100%);
 	}
 }
 </style>
