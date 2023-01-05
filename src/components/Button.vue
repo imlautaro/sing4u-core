@@ -81,7 +81,7 @@ const buildClasses = computed(() => {
 		<div
 			:class="
 				color === 'primary'
-					? 'nt:group-hover:bg-white/5 !active:bg-black/5'
+					? 'nt:group-hover:bg-white/5 !group-active:bg-black/5'
 					: 'nt:group-hover:bg-slate-200/25 dark:nt:group-hover:bg-neutral-700/25 !group-active:bg-slate-200/50 !dark:group-active:bg-neutral-700/50'
 			"
 			class="absolute duration-100 h-full left-0 top-0 w-full"
