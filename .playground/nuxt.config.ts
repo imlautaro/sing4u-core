@@ -8,7 +8,7 @@ export default defineNuxtConfig({
 	unocss: {
 		theme: {
 			colors: {
-				primary: colors!.teal,
+				primary: colors!.pink,
 			},
 		},
 	},

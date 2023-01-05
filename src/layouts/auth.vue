@@ -1,3 +1,33 @@
+<script setup lang="ts">
+import { breakpointsTailwind } from '@vueuse/core'
+import { colors } from '@unocss/preset-mini'
+
+const breakpoints = useBreakpoints(breakpointsTailwind)
+const darkMode = useDarkMode()
+const { colors: appColors } = useAppConfig()
+
+const themeColor = computed(() => {
+	if (darkMode.value) {
+		// @ts-ignore
+		return colors!.neutral[900]
+	} else {
+		return breakpoints.isGreaterOrEqual('md')
+			? // @ts-ignore
+			  appColors.primary[900]
+			: '#ffffff'
+	}
+})
+
+useHead(() => ({
+	meta: [
+		{
+			name: 'theme-color',
+			content: themeColor,
+		},
+	],
+}))
+</script>
+
 <template>
 	<div class="grid grid-cols-6 lg:grid-cols-12 lg:grid-rows-12 min-h-screen">
 		<div class="fixed left-4 top-4">
