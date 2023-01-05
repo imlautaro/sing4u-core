@@ -1,5 +1,5 @@
 <template>
-	<div class="duration-100 bg-surface border border-default">
+	<div class="duration-100 bg-surface border-2 border-default">
 		<slot />
 	</div>
 </template>

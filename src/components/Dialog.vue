@@ -26,7 +26,7 @@ watch(
 	>
 		<transition name="dialog">
 			<Stack
-				class="max-w-md sm:border border-transparent bg-surface dark:border-neutral-700 shadow-xl <sm:rounded-b-none rounded-3xl w-full"
+				class="max-w-md sm:border-2 border-transparent bg-surface dark:border-neutral-700 shadow-xl <sm:rounded-b-none rounded-3xl w-full"
 				v-if="modelValue"
 				vertical
 			>

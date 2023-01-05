@@ -11,7 +11,7 @@ const { email, errors, login, loginWith, pending } = useAuth()
 	<Stack gap="6" vertical>
 		<Stack v-if="$route.query.sent" gap="4" vertical>
 			<Stack
-				class="border border mx-auto p-6 rounded-full text-3xl text-success-600"
+				class="border-2 border-default mx-auto p-6 rounded-full text-3xl text-success-600"
 			>
 				<Icon name="lucide:mail-check" />
 			</Stack>
@@ -27,7 +27,7 @@ const { email, errors, login, loginWith, pending } = useAuth()
 		<template v-else>
 			<Stack gap="4" vertical>
 				<Stack
-					class="dark:bg-white/5 border mx-auto p-6 rounded-full text-3xl"
+					class="dark:bg-white/5 border-2 border-default mx-auto p-6 rounded-full text-3xl"
 				>
 					<Icon name="lucide:user" />
 				</Stack>

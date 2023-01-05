@@ -1,18 +1,14 @@
-import colors from 'windicss/colors'
+import { colors } from '@unocss/preset-mini'
 
 export default defineNuxtConfig({
 	extends: '..',
 	typescript: {
 		includeWorkspace: true,
 	},
-	windicss: {
-		config: {
-			theme: {
-				extend: {
-					colors: {
-						primary: colors.teal,
-					},
-				},
+	unocss: {
+		theme: {
+			colors: {
+				primary: colors!.teal,
 			},
 		},
 	},
