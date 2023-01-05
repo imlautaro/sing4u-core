@@ -9,11 +9,11 @@ const { colors: appColors } = useAppConfig()
 const themeColor = computed(() => {
 	if (darkMode.value) {
 		// @ts-ignore
-		return colors!.neutral[900]
+		return colors!.neutral[800]
 	} else {
 		return breakpoints.isGreaterOrEqual('md')
 			? // @ts-ignore
-			  appColors.primary[900]
+			  appColors.primary[600]
 			: '#ffffff'
 	}
 })
