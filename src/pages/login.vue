@@ -11,7 +11,7 @@ const { email, errors, login, loginWith, pending } = useAuth()
 	<Stack gap="6" vertical>
 		<Stack v-if="$route.query.sent" gap="4" vertical>
 			<Stack
-				class="border-2 border-default mx-auto p-6 rounded-full text-3xl text-success-600"
+				class="border-2 border-default mx-auto p-6 rounded-full text-3xl text-success-600 dark:text-success-400"
 			>
 				<Icon name="lucide:mail-check" />
 			</Stack>
