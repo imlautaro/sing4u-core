@@ -13,7 +13,7 @@ onMounted(() => {
 
 <template>
 	<ListItemButton
-		class="<sm:(rounded-none) font-bold"
+		class="lt-sm:(rounded-none) font-bold"
 		@click="expand = !expand"
 	>
 		<template #icon>

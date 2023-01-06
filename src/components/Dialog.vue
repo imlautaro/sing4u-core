@@ -22,11 +22,11 @@ watch(
 
 <template>
 	<div
-		class="fixed left-1/2 <sm:bottom-0 sm:(left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2) transform -translate-x-1/2 z-40 max-w-md w-full"
+		class="fixed left-1/2 lt-sm:bottom-0 sm:(left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2) transform -translate-x-1/2 z-40 max-w-md w-full"
 	>
 		<transition name="dialog">
 			<Stack
-				class="max-w-md sm:border-2 border-transparent bg-surface dark:border-neutral-700 shadow-xl <sm:rounded-b-none rounded-3xl w-full"
+				class="max-w-md sm:border-2 border-transparent bg-surface dark:border-neutral-700 shadow-xl lt-sm:rounded-b-none rounded-3xl w-full"
 				v-if="modelValue"
 				vertical
 			>
