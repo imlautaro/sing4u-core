@@ -3,18 +3,18 @@ export default defineNuxtPlugin(nuxtApp => {
 	const supaAuth = useSupabaseAuthClient().auth
 	const user = useSupabaseUser()
 
-	const products = useState('products', () => [])
+	const properties = useState('properties', () => [])
 
 	const sync = async () => {
 		if (user.value) {
 			const { data } = await supabase
 				.from('properties')
-				.select('*')
+				.select('*, product:product_id (*)')
 				.eq('user_email', user.value.email)
 
-			products.value = data || []
+			properties.value = data || []
 		} else {
-			products.value = []
+			properties.value = []
 		}
 	}
 
