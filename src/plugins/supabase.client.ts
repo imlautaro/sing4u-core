@@ -3,16 +3,16 @@ export default defineNuxtPlugin(nuxtApp => {
 	const supaAuth = useSupabaseAuthClient().auth
 	const user = useSupabaseUser()
 
-	const properties = useState('properties', () => [])
+	const properties = useProperties()
 
 	const sync = async () => {
 		if (user.value) {
 			const { data } = await supabase
 				.from('properties')
-				.select('*, product:product_id (*)')
+				.select('user_email, product:product_id (id, name, price)')
 				.eq('user_email', user.value.email)
 
-			properties.value = data || []
+			properties.value = (data as Property[]) || []
 		} else {
 			properties.value = []
 		}
@@ -21,7 +21,8 @@ export default defineNuxtPlugin(nuxtApp => {
 	sync()
 
 	nuxtApp.hooks.hook('app:mounted', () => {
-		supaAuth.onAuthStateChange(() => {
+		supaAuth.onAuthStateChange((_event, session) => {
+			user.value = session?.user || null
 			sync()
 		})
 	})
