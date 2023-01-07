@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { breakpointsTailwind } from '@vueuse/core'
+
+const breakpoints = useBreakpoints(breakpointsTailwind)
+
 const backdrop = useBackdrop()
 
 const route = useRoute()
@@ -9,21 +13,20 @@ watch(route, () => {
 
 const darkMode = useDarkMode()
 const themeColor = useThemeColor()
-
-const originalThemeColor = useState<string | null>(
-	'original-theme-color',
-	() => null
-)
+const { colors: appColors } = useAppConfig()
 
 watch(backdrop, value => {
-	if (!originalThemeColor.value) {
-		originalThemeColor.value = themeColor.value
-	}
 	if (value) {
 		themeColor.value = darkMode.value ? '#080808' : '#333333'
 	} else {
-		themeColor.value = originalThemeColor.value
-		originalThemeColor.value = null
+		if (route.name === 'login' && breakpoints.isGreaterOrEqual('md')) {
+			themeColor.value = darkMode.value
+				? '#262626'
+				: // @ts-ignore
+				  appColors.primary[600]
+		} else {
+			themeColor.value = darkMode.value ? '#262626' : '#ffffff'
+		}
 	}
 })
 </script>
