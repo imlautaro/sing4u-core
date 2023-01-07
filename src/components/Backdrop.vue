@@ -1,5 +1,31 @@
 <script setup lang="ts">
 const backdrop = useBackdrop()
+
+const route = useRoute()
+
+watch(route, () => {
+	backdrop.value = false
+})
+
+const darkMode = useDarkMode()
+const themeColor = useThemeColor()
+
+const originalThemeColor = useState<string | null>(
+	'original-theme-color',
+	() => null
+)
+
+watch(backdrop, value => {
+	if (!originalThemeColor.value) {
+		originalThemeColor.value = themeColor.value
+	}
+	if (value) {
+		themeColor.value = darkMode.value ? '#080808' : '#333333'
+	} else {
+		themeColor.value = originalThemeColor.value
+		originalThemeColor.value = null
+	}
+})
 </script>
 
 <template>
@@ -15,9 +41,9 @@ const backdrop = useBackdrop()
 <style scoped>
 .backdrop-enter-active,
 .backdrop-leave-active {
-	-webkit-transition-duration: 200ms;
-	-o-transition-duration: 200ms;
-	transition-duration: 200ms;
+	-webkit-transition-duration: 250ms;
+	-o-transition-duration: 250ms;
+	transition-duration: 250ms;
 }
 .backdrop-enter-from,
 .backdrop-leave-to {
