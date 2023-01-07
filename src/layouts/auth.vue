@@ -6,26 +6,19 @@ const breakpoints = useBreakpoints(breakpointsTailwind)
 const darkMode = useDarkMode()
 const { colors: appColors } = useAppConfig()
 
-const themeColor = computed(() => {
+const themeColor = useThemeColor()
+
+watchEffect(() => {
 	if (darkMode.value) {
 		// @ts-ignore
-		return colors!.neutral[800]
+		themeColor.value = colors!.neutral[800]
 	} else {
-		return breakpoints.isGreaterOrEqual('md')
+		themeColor.value = breakpoints.isGreaterOrEqual('md')
 			? // @ts-ignore
 			  appColors.primary[600]
 			: '#ffffff'
 	}
 })
-
-useHead(() => ({
-	meta: [
-		{
-			name: 'theme-color',
-			content: themeColor,
-		},
-	],
-}))
 </script>
 
 <template>
