@@ -4,7 +4,7 @@ export default (productName?: string) => {
 
 	const hasPaid = computed(() => {
 		return !!(properties.value as { product: { name: string } }[]).find(
-			i => i.product.name === productName || appConfig.product?.name
+			i => i.product.name === (productName || appConfig.product?.name)
 		)
 	})
 
