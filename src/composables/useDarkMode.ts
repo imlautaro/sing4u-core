@@ -1,6 +1,6 @@
 export default () => {
 	const colorMode = useColorMode()
-	const darkMode = ref(false)
+	const darkMode = useState('dark-mode', () => false)
 
 	onMounted(() => {
 		darkMode.value = colorMode.value === 'dark'
