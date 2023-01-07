@@ -7,6 +7,8 @@ export default defineNuxtPlugin(nuxtApp => {
 				{
 					name: 'theme-color',
 					content: themeColor.value,
+					tagPriority: 1,
+					tagDuplicateStrategy: 'replace',
 				},
 			],
 		}))
