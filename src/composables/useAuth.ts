@@ -57,16 +57,12 @@ export default () => {
 	const loginWith = async (provider: Provider) => {
 		if (pending.value) return
 
-		pending.value = true
-
 		const { error } = await supaAuth.signInWithOAuth({
 			provider,
 			options: {
 				redirectTo: `${baseURL}${redirectTo}`,
 			},
 		})
-
-		pending.value = false
 
 		if (error) {
 			errors.general = 'Ha ocurrido un error'
