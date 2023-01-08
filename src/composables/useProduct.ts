@@ -1,5 +1,6 @@
-export default async (name: string) => {
+export default async (productName?: string) => {
 	const supabase = useSupabaseClient()
+	const appConfig = useAppConfig()
 
 	const { data: product, pending } = await useLazyAsyncData(
 		'product',
@@ -7,7 +8,7 @@ export default async (name: string) => {
 			const { data } = await supabase
 				.from('products')
 				.select('name, price')
-				.eq('name', name)
+				.eq('name', productName || appConfig.product?.name)
 				.single()
 			return data
 		}
